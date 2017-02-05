@@ -1,9 +1,11 @@
 const initialState = {
   isSearching: true,
+  isOpen: false,
   text: '',
   items: [],
   images: [],
   titles: ['', '', '', '', '', '', '', '', '', ''],
+  loading: false,
 };
 
 const reducers = (state = initialState, action) => {
@@ -22,6 +24,7 @@ const reducers = (state = initialState, action) => {
           }
           return e;
         }),
+        loading: false,
       });
     case 'UPDATE_PRICE':
       return Object.assign({}, state, {
@@ -34,6 +37,7 @@ const reducers = (state = initialState, action) => {
     case 'TO_RESULTS':
       return Object.assign({}, state, {
         isSearching: false,
+        loading: true,
       });
     case 'OPEN_DIALOG':
       return Object.assign({}, state, {
@@ -42,6 +46,10 @@ const reducers = (state = initialState, action) => {
     case 'CLOSE_DIALOG':
       return Object.assign({}, state, {
         isOpen: false,
+      });
+    case 'END_LOADING':
+      return Object.assign({}, state, {
+        loading: false,
       });
     default:
       return state;
