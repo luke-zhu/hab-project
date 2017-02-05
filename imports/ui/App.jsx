@@ -1,10 +1,15 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardMedia, CardTitle } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import FlatButton from 'material-ui/FlatButton';
+<<<<<<< HEAD
+=======
+import LinearProgress from 'material-ui/LinearProgress';
+
+>>>>>>> origin/master
 import Faq from './Faq.jsx';
 
 import {
@@ -13,10 +18,10 @@ import {
   toResults,
   toSearch,
   openDialog,
-  closeDialog
+  closeDialog,
 } from './redux/actions';
 
-const App = ({ text, items, titles, images, handleKey, price, selectItem, isSearching, showResults, goBackHome, handleDialog, handleClose, isOpen }) => {
+const App = ({ text, items, titles, images, handleKey, price, selectItem, isSearching, showResults, goBackHome, handleDialog, handleClose, isOpen, loading }) => {
   console.log(isSearching);
   console.log(isOpen);
   const rows = [];
@@ -29,7 +34,8 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
             margin: '15px',
             backgroundColor: '#D8D8D8',
           }}
-          onClick={() => selectItem(items[i])}>
+          onClick={() => selectItem(items[i])}
+        >
           <CardMedia ba>
             <img src={images[i].src} />
           </CardMedia>
@@ -52,7 +58,7 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
           label="Our Goal"
           onClick={handleDialog}
         />
-        <Faq isOpen={isOpen} onRequestClose={handleClose}/>
+        <Faq isOpen={isOpen} onRequestClose={handleClose} />
         <TextField
           hintText="SEARCH FOR A PRODUCT"
           fullWidth={false}
@@ -103,35 +109,46 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
           color: '#D8D8D8',
           width: '98%',
         }}
+<<<<<<< HEAD
         onKeyPress={handleKey}/>
       <Paper style={{ backgroundColor: 'white', 
         display: 'flex',
         position: 'relative',
         marginTop: '10px'}} zDepth={2}>
+=======
+        onKeyPress={handleKey}
+      />
+      {loading ? (
+        <LinearProgress
+          mode="indeterminate"
+          style={{
+            display: 'block',
+            marginTop: '27%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            position: 'relative',
+          }}
+        />
+        ) : null}
+      <Paper style={{ backgroundColor: 'white', display: 'flex' }} zDepth={2}>
+>>>>>>> origin/master
         {rows}
       </Paper>
       {price ? (
-        <Paper style={{ backgroundColor: 'gray', display: 'flex' }} zDepth={0}>
-          <Paper
-            style={{ backgroundColor: '#666666',
-              paddingLeft: '20px',
-              paddingRight: '20px',
-              }}
-            zDepth={2}
-          >
-            <h3>Information</h3>
-            <h3>for Sellers</h3>
-          </Paper>
-          <Paper style={{ backgroundColor: '#D8D8D8', paddingLeft: '20px', flex: 1 }} zDepth={2}>
-            <h3>Amazon</h3>
-            <h4>Referral Fee: ~${(0.1 * price).toFixed(2)}</h4>
-            <h4>Fulfillment Fee: ~${(0.15 * price).toFixed(2)}</h4>
-            <h4>Total Cost to Sell: ~${(1.25 * price).toFixed(2)}</h4>
-          </Paper>
-          <Paper style={{ backgroundColor: '#D8D8D8', paddingLeft: '20px', flex: 1 }} zDepth={2}>
-            <h3>Ebay</h3>
-            <h4>Listing Fee: ~${(0.1 * price).toFixed(2)}</h4>
-            <h4>Total Cost to Sell: ~${(1.1 * price).toFixed(2)} + Storage Cost per Unit</h4>
+        <Paper style={{ backgroundColor: '#97989D', paddingTop: '10px' }} zDepth={0}>
+          <h3 style={{ paddingLeft: '20px' }} >Information for Sellers</h3>
+          <Paper style={{ display: 'flex' }} >
+            <div style={{ backgroundColor: '#D8D8D8', paddingLeft: '20px', flex: 1 }} zDepth={2}>
+              <h3>Amazon</h3>
+              <h4>Referral Fee: ~${(0.1 * price).toFixed(2)}</h4>
+              <h4>Fulfillment Fee: ~${(0.15 * price).toFixed(2)}</h4>
+              <h4>Total Cost to Sell: ~${(1.25 * price).toFixed(2)}</h4>
+            </div>
+            <div style={{ backgroundColor: '#D8D8D8', paddingLeft: '20px', flex: 1 }} zDepth={2}>
+              <h3>Ebay</h3>
+              <h4>Listing Fee: ~${(0.1 * price).toFixed(2)}</h4>
+              <h4>Total Cost to Sell: ~${(1.1 * price).toFixed(2)} + Storage Cost per Unit</h4>
+            </div>
           </Paper>
         </Paper>
         ) : null
@@ -152,6 +169,7 @@ App.propTypes = {
   handleDialog: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -162,6 +180,7 @@ const mapStateToProps = state => ({
   price: state.price,
   isSearching: state.isSearching,
   isOpen: state.isOpen,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -3,11 +3,11 @@ import Dialog from 'material-ui/Dialog';
 
 const Faq = ({ isOpen, onRequestClose }) => (
   <Dialog
-      title="Our Mission"
-      open={isOpen}
-      onRequestClose={onRequestClose}
-      modal={false}
-    >
+    title="Our Mission"
+    open={isOpen}
+    onRequestClose={onRequestClose}
+    modal={false}
+  >
     Ecommerce has become increasing important to our everyday lives and
     the global economy. By allowing for items to transfer between
     people all the around the world, ecommerce has allowed for people
@@ -34,6 +34,7 @@ const Faq = ({ isOpen, onRequestClose }) => (
 
 Faq.propTypes = {
   isOpen: PropTypes.bool.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
 };
 
 export default Faq;

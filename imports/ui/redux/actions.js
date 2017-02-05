@@ -21,6 +21,10 @@ export const toSearch = () => ({
   type: 'TO_SEARCH',
 });
 
+export const endLoading = () => ({
+  type: 'END_LOADING',
+});
+
 const translateToEnglish = (text, index) => (
   (dispatch) => {
     Meteor.call('translate-english', encodeURI(text), (err, res) => {
@@ -43,55 +47,60 @@ const findCN = text => (
       if (error) {
         console.log(error);
       } else {
-        const el = document.createElement('html');
-        el.innerHTML = result;
-        const elts = el.getElementsByTagName('strong');
-        const imgs = el.getElementsByTagName('img');
-        const titles = el.getElementsByTagName('em');
+        try {
+          const el = document.createElement('html');
+          el.innerHTML = result;
+          const elts = el.getElementsByTagName('strong');
+          const imgs = el.getElementsByTagName('img');
+          const titles = el.getElementsByTagName('em');
 
-        const items = [];
-        let i = 0;
-        let count = 0;
-        while (count < Math.min(10, imgs.length)) {
-          if (elts[i].className[0] === 'J') {
-            items.push(elts[i]);
-            count += 1;
+          const items = [];
+          let i = 0;
+          let count = 0;
+          while (count < Math.min(10, imgs.length)) {
+            if (elts[i].className[0] === 'J') {
+              items.push(elts[i]);
+              count += 1;
+            }
+            i += 1;
           }
-          i += 1;
-        }
 
-        const finalImgs = [];
-        i = 0;
-        count = 0;
-        while (count < Math.min(10, imgs.length)) {
-          if (imgs[i].src !== '' && imgs[i].width === 220 && !imgs[i]['data-lazy-img']) {
-            finalImgs.push(imgs[i]);
-            count += 1;
+          const finalImgs = [];
+          i = 0;
+          count = 0;
+          while (count < Math.min(10, imgs.length)) {
+            if (imgs[i].src !== '' && imgs[i].width === 220 && !imgs[i]['data-lazy-img']) {
+              finalImgs.push(imgs[i]);
+              count += 1;
+            }
+            i += 1;
           }
-          i += 1;
-        }
 
-        const finalTitles = [];
-        i = 0;
-        count = 0;
-        while (count < Math.min(10, imgs.length)) {
-          if (titles[i].innerText.length > 1) {
-            finalTitles.push(titles[i].innerText);
-            count += 1;
+          const finalTitles = [];
+          i = 0;
+          count = 0;
+          while (count < Math.min(10, imgs.length)) {
+            if (titles[i].innerText.length > 1) {
+              finalTitles.push(titles[i].innerText);
+              count += 1;
+            }
+            i += 1;
           }
-          i += 1;
+
+          finalTitles.forEach((e, index) => (
+            dispatch(translateToEnglish(finalTitles[index], index))
+          ));
+
+          dispatch({
+            type: 'FIND_ITEMS',
+            text,
+            items,
+            finalImgs,
+          });
+        } catch (e) {
+          console.error(e);
+          dispatch(endLoading());
         }
-
-        finalTitles.forEach((e, index) => (
-          dispatch(translateToEnglish(finalTitles[index], index))
-        ));
-
-        dispatch({
-          type: 'FIND_ITEMS',
-          text,
-          items,
-          finalImgs,
-        });
       }
     });
   }
