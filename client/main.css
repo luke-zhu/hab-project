@@ -1,1 +1,177 @@
 /* CSS declarations go here */
+body {
+	background-color: #BECCCF;
+}
+
+.home {
+	position: relative;
+	width: 100%;
+}
+
+.result {
+	position: relative;
+	width: 100%;
+  	height: 100%;
+  	background-size: 100% auto;
+}
+
+.header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.search {
+	position: absolute;
+	top: 458px;
+	left: 367px;
+	text-align: center;
+
+}
+
+.searchButton {
+	position: absolute;
+	top: 535px;
+	left: 620px; 
+}
+
+.resultSearchButton {
+	position: fixed;
+	top: 40px;
+	left: 1106px;
+}
+
+.resultSearch {
+	position: fixed;
+	top: 30px;
+	left: 375px; 
+}
+
+.resultButton {
+	position: relative;
+	width: 100%;
+}
+
+.goBack {
+	position: absolute;
+	top: 50px;
+	left: 25px;
+}
+
+.button {
+	position: fixed;
+	background-color: transparent;
+	background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+	top: 35px;
+	left: 42px;
+}
+
+.product1 {
+	position: absolute;
+	height: 242px;
+	width: 330px;
+	top: 132px;
+	left: 22px;
+}
+
+.product2 {
+	position: absolute;
+	height: 242px;
+	width: 330px;
+	top: 429px;
+	left: 22px;
+}
+
+.product3 {
+	position: absolute;
+	height: 242px;
+	width: 330px;
+	top: 429px;
+	left: 377.33px;
+}
+
+.product4 {
+	position: absolute;
+	height: 242px;
+	width: 330px;
+	top: 429px;
+	left: 732.67px;
+}
+
+.product5 {
+	position: absolute;
+	height: 242px;
+	width: 330px;
+	top: 429px;
+	left: 1088px;
+}
+
+.text1 {
+	word-wrap: break-word;
+	position: absolute;
+	text-align: left;
+	top: 132px;
+	left: 377px;
+	height: 242px;
+	width: 1041px;
+}
+
+.text2 {
+	word-wrap: break-word;
+	position: absolute;
+	top: 693px;
+	left: 33px;
+	height: 342px;
+	width: 308px;
+}
+
+.text3 {
+	word-wrap: break-word;
+	position: absolute;
+	top: 693px;
+	left: 388px;
+	height: 342px;
+	width: 308px;
+}
+
+.text4 {
+	word-wrap: break-word;
+	position: absolute;
+	top: 693px;
+	left: 744px;
+	height: 342px;
+	width: 308px;
+}
+
+.text5 {
+	word-wrap: break-word;
+	position: absolute;
+	top: 693px;
+	left: 1099px;
+	height: 342px;
+	width: 308px;
+}
+
+.search input {
+    color: #666666 !important;
+    
+}
+
+.search input:focus {
+
+}
+
+.idk {
+	position: absolute;
+	top: 50%;
+	margin-top: 300px;
+}
+
+.button {
+	width: 40px;
+	height: 40px;
+}
