@@ -1,8 +1,24 @@
 import { Meteor } from 'meteor/meteor';
 
+export const openDialog = () => ({
+  type: 'OPEN_DIALOG',
+});
+
+export const closeDialog = () => ({
+  type: 'CLOSE_DIALOG',
+});
+
 export const updatePrice = item => ({
   type: 'UPDATE_PRICE',
   item,
+});
+
+export const toResults = () => ({
+  type: 'TO_RESULTS',
+});
+
+export const toSearch = () => ({
+  type: 'TO_SEARCH',
 });
 
 const translateToEnglish = (text, index) => (

@@ -1,4 +1,5 @@
 const initialState = {
+  isSearching: true,
   text: '',
   items: [],
   images: [],
@@ -25,6 +26,22 @@ const reducers = (state = initialState, action) => {
     case 'UPDATE_PRICE':
       return Object.assign({}, state, {
         price: parseFloat(action.item.textContent.substring(1)) * 0.15,
+      });
+    case 'TO_SEARCH':
+      return Object.assign({}, state, {
+        isSearching: true,
+      });
+    case 'TO_RESULTS':
+      return Object.assign({}, state, {
+        isSearching: false,
+      });
+    case 'OPEN_DIALOG':
+      return Object.assign({}, state, {
+        isOpen: true,
+      });
+    case 'CLOSE_DIALOG':
+      return Object.assign({}, state, {
+        isOpen: false,
       });
     default:
       return state;
