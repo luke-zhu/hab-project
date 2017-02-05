@@ -5,11 +5,8 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import FlatButton from 'material-ui/FlatButton';
-<<<<<<< HEAD
-=======
 import LinearProgress from 'material-ui/LinearProgress';
 
->>>>>>> origin/master
 import Faq from './Faq.jsx';
 
 import {
@@ -109,15 +106,11 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
           color: '#D8D8D8',
           width: '98%',
         }}
-<<<<<<< HEAD
         onKeyPress={handleKey}/>
       <Paper style={{ backgroundColor: 'white', 
         display: 'flex',
         position: 'relative',
         marginTop: '10px'}} zDepth={2}>
-=======
-        onKeyPress={handleKey}
-      />
       {loading ? (
         <LinearProgress
           mode="indeterminate"
@@ -127,11 +120,8 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
             marginLeft: 'auto',
             marginRight: 'auto',
             position: 'relative',
-          }}
-        />
-        ) : null}
+          }}/>) : null}
       <Paper style={{ backgroundColor: 'white', display: 'flex' }} zDepth={2}>
->>>>>>> origin/master
         {rows}
       </Paper>
       {price ? (
@@ -153,6 +143,7 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
         </Paper>
         ) : null
       }
+      </Paper>
     </ReactCSSTransitionGroup>
   );
 };
