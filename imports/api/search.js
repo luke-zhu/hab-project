@@ -12,7 +12,11 @@ Meteor.methods({
       `key=AIzaSyAC9KPfoCNFabOyuwW80O7NLeegBlQWIaw&source=en&target=zh&q=${title}`);
     return res;
   },
-
+  'translate-english': chinese => {
+    const res = HTTP.get(`https://translation.googleapis.com/language/translate/v2?` +
+      `key=AIzaSyAC9KPfoCNFabOyuwW80O7NLeegBlQWIaw&source=zh&target=en&q=${chinese}`);
+    return res;
+  },
   'taobao-url': keywordVar => {
     const res = HTTP.get(`https://world.taobao.com/search/search.htm?&_input_charset=utf-8&q=
       ${keywordVar}&enc=utf-8`, {
