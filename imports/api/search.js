@@ -12,4 +12,16 @@ Meteor.methods({
       `key=AIzaSyAC9KPfoCNFabOyuwW80O7NLeegBlQWIaw&source=en&target=zh&q=${title}`);
     return res;
   },
+
+  'taobao-url': keywordVar => {
+    return 'https://world.taobao.com/search/search.htm?&_input_charset=utf-8&q=' + keywordVar;
+  },
+
+  'alibaba-url': keywordVar => {
+    return 'https://www.alibaba.com/trade/search?fsb=y&SearchText=' + keywordVar;
+  },
+
+  'jd-url': keywordVar => {
+    return 'http://search.jd.com/Search?keyword=' + keywordVar;
+  },
 });
