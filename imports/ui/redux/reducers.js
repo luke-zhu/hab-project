@@ -2,7 +2,7 @@ const initialState = {
   text: '',
   items: [],
   images: [],
-  titles: ['', '' ,'' ,'' ,'' ,'' ,'' ,'' ,'' ,''],
+  titles: ['', '', '', '', '', '', '', '', '', ''],
 };
 
 const reducers = (state = initialState, action) => {
@@ -21,6 +21,10 @@ const reducers = (state = initialState, action) => {
           }
           return e;
         }),
+      });
+    case 'UPDATE_PRICE':
+      return Object.assign({}, state, {
+        price: parseFloat(action.item.textContent.substring(1)) * 0.15,
       });
     default:
       return state;

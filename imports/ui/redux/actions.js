@@ -1,5 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 
+export const updatePrice = item => ({
+  type: 'UPDATE_PRICE',
+  item,
+});
+
 const translateToEnglish = (text, index) => (
   (dispatch) => {
     Meteor.call('translate-english', encodeURI(text), (err, res) => {
@@ -22,12 +27,11 @@ const findCN = text => (
       if (error) {
         console.log(error);
       } else {
-        const el = document.createElement( 'html' );
+        const el = document.createElement('html');
         el.innerHTML = result;
         const elts = el.getElementsByTagName('strong');
         const imgs = el.getElementsByTagName('img');
         const titles = el.getElementsByTagName('em');
-        
 
         const items = [];
         let i = 0;
@@ -62,7 +66,9 @@ const findCN = text => (
           i += 1;
         }
 
-        finalTitles.forEach((e, i) => dispatch(translateToEnglish(finalTitles[i], i)));
+        finalTitles.forEach((e, index) => (
+          dispatch(translateToEnglish(finalTitles[index], index))
+        ));
 
         dispatch({
           type: 'FIND_ITEMS',
