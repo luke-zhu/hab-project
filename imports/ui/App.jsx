@@ -5,7 +5,6 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import FlatButton from 'material-ui/FlatButton';
-
 import Faq from './Faq.jsx';
 
 import {
@@ -73,8 +72,7 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
             color: '#D8D8D8',
             width: '97%',
           }}
-          onKeyPress={handleKey}
-        />
+          onKeyPress={handleKey}/>
       </ReactCSSTransitionGroup>
     );
   }
@@ -85,16 +83,15 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
       transitionEnter={false}
       transitionLeave={false}
     >
-      <FlatButton
-        label="SCOPE"
-        onClick={goBackHome}
-      />
+      <FlatButton 
+        icon={<img src="images/Scope_Logo.svg" height='35px' width='30px' />}
+        onClick={goBackHome}/>
       <TextField
         hintText="SEARCH FOR A PRODUCT"
         fullWidth={false}
         style={{
-          width: '60%',
-          // backgroundColor: 'white',
+          width: '85%',
+          backgroundColor: 'white',
           marginLeft: 'auto',
           marginRight: 'auto',
           position: 'relative',
@@ -106,9 +103,11 @@ const App = ({ text, items, titles, images, handleKey, price, selectItem, isSear
           color: '#D8D8D8',
           width: '98%',
         }}
-        onKeyPress={handleKey}
-      />
-      <Paper style={{ backgroundColor: 'white', display: 'flex' }} zDepth={2}>
+        onKeyPress={handleKey}/>
+      <Paper style={{ backgroundColor: 'white', 
+        display: 'flex',
+        position: 'relative',
+        marginTop: '10px'}} zDepth={2}>
         {rows}
       </Paper>
       {price ? (
