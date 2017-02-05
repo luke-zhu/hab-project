@@ -14,13 +14,23 @@ Meteor.methods({
   },
 
   'taobao-url': keywordVar => {
-    const res = HTTP.get('https://world.taobao.com/search/search.htm?&_input_charset=utf-8&q=' + keywordVar);
+    const res = HTTP.get(`https://world.taobao.com/search/search.htm?&_input_charset=utf-8&q=
+      ${keywordVar}&enc=utf-8`, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
+        }
+      });
     return res;
   },
 
   'alibaba-url': keywordVar => {
-    const res = HTTP.get('https://www.alibaba.com/trade/search?fsb=y&SearchText=' + keywordVar);
-    return res;
+    const res = HTTP.get(`https://www.alibaba.com/trade/search?fsb=y&SearchText=
+      ${keywordVar}&enc=utf-8`, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
+        }
+      });
+    return res.content;
   },
 
   'jd-url': keywordVar => {
